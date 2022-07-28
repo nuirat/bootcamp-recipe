@@ -15,7 +15,7 @@ const getRecpe = function (recipeName, response) {
           ingredients: recipe.ingredients,
           title: recipe.title,
           thumbnail: recipe.thumbnail,
-          href: recipe.href
+          href: recipe.href,
         };
       });
       response.send(recipes);
