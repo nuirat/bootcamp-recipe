@@ -3,11 +3,10 @@ const path = require("path");
 const app = express();
 app.use(express.static(path.join(__dirname, "dist")));
 app.use(express.static(path.join(__dirname, "node_modules")));
-console.log(path.join(__dirname, "node_modules"));
-let players = [];
 let axios = require("axios");
 let recipes = [];
-const getRecpe = function (recipeName) {
+
+const getRecpe = function (recipeName, response) {
   axios
     .get(`https://recipes-goodness.herokuapp.com/recipes/${recipeName}`)
     .then((result) => {
@@ -16,9 +15,10 @@ const getRecpe = function (recipeName) {
           ingredients: recipe.ingredients,
           title: recipe.title,
           thumbnail: recipe.thumbnail,
-          href: recipe.href,
+          href: recipe.href
         };
       });
+      response.send(recipes);
     });
 };
 
@@ -30,5 +30,5 @@ app.get("/sanity", function (request, response) {
   response.send("ok");
 });
 app.get("/recipes/:ingredient", function (request, response) {
-  getRecpe(request.params.ingredient);
+  getRecpe(request.params.ingredient, response);
 });

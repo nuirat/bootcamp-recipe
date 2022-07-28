@@ -17,15 +17,19 @@
     <script src="./jquery/dist/jquery.js"></script> 
     <script id="first" type="text/x-handlebars-template">   
          
-            {{#each userInfo}} 
-           <div class="player">
-            <h2 class="player">{{firstName}} {{lastName}}</h2>
-            <p>{{jersey}}</p>
-             <img src="https://nba-players.herokuapp.com/players/{{lastName}}/{{firstName}}"> 
-             <div>{{pos}}</div>
-
-           </div>
-
+            {{#each recipes}} 
+           <div class="recipe">
+            <div><a href="{{href}}">{{title}} </a></div>
+             <img src="{{thumbnail}}">
+             <div>ingredients: </div>
+             <ul>
+             {{#each ingredients}}
+             <li>{{this}}</li>
+             
+           
+           {{/each}}
+        </ul>
+        </div>
            {{/each}}
         
     </script>
