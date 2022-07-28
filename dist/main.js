@@ -1,8 +1,8 @@
 let render = new Renderer()
-const fetchPrice = function () {
-    let input = $("#team").val()
+const fetchRecipe = function () {
+    let input = $("#ingredient").val()
    
-    $.get(`teams/${input}`, function (item) {
+    $.get(`recipes/${input}`, function (item) {
        render.renderUser(item)
     })
    
